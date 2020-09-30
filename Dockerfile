@@ -14,12 +14,20 @@ RUN if [ "${INSTALL_DOCKER}" = "true" ]; then \
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
-    curl            \
-    xz-utils        \
-    gcc             \
-    make            \
-    libtinfo5       \
-    libgmp-dev      \
+    libssl1.0.2         \
+    libkrb5-3           \
+    libicu57            \ 
+    gnome-keyring       \
+    libsecret-1-0       \
+    desktop-file-utils \ 
+    x11-utils           \
+    curl                \
+    xz-utils            \
+    gcc                 \
+    make                \
+    libtinfo5           \
+    libgmp-dev          \
+    zlib1g              \
     zlib1g-dev
 
 USER codespace
