@@ -1,0 +1,13 @@
+name: Publish Haskell Codespaces Docker Image
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Publish to Dockerhub
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: davidgontrum/haskellcodespaces
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
