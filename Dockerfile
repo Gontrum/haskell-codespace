@@ -25,7 +25,6 @@ RUN if [ "${INSTALL_DOCKER}" = "true" ]; then \
 USER codespace
 
 ENV PATH="/home/codespace/.cabal/bin:/home/codespace/.ghcup/bin:${PATH}"
-RUN echo ${GHC_VERSION_TO_USE}
 RUN mkdir -p ~/.ghcup/bin && \
     curl https://gitlab.haskell.org/haskell/ghcup/raw/master/ghcup > ~/.ghcup/bin/ghcup && \
     chmod +x ~/.ghcup/bin/ghcup && \
@@ -35,7 +34,6 @@ RUN mkdir -p ~/.ghcup/bin && \
     ghcup upgrade && \
     ghcup install ghc && \
     ghcup install ghc ${GHC_VERSION_TO_USE} && \
-    echo ${GHC_VERSION_TO_USE} && \
     ghcup set ghc ${GHC_VERSION_TO_USE} && \
     ghcup install-cabal && \
     cabal update && \
