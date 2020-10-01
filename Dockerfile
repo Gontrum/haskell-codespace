@@ -34,9 +34,12 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     make                \
     libtinfo5           \
     libgmp-dev          \
+    libtinfo-dev        \
     zlib1g              \
     zlib1g-dev       && \
     rm -rf /var/lib/apt/lists/*
+
+RUN dpkg-reconfigure -f noninteractive tzdata && sed -i -e 's/# de_DE.UTF-8 UTF-8/de_DE.UTF-8 UTF-8/' /etc/locale.gen && echo 'LANG="de_DE.UTF-8"'>/etc/default/locale && dpkg-reconfigure --frontend=noninteractive locales && update-locale LANG=de_DE.UTF-8
 
 USER codespace
 
